@@ -1,5 +1,6 @@
 #
 #  Developed 2020 by Boštjan Vihar (bostjan AT irnas DOT eu) and Luka Banović (banovic AT irnas DOT eu)
+#  Compatible with PlanetCNC TNG version: 2020.06.18
 #
 
 '''
@@ -33,6 +34,7 @@ planetcnc_enabled = False
 try:
 	import planetcnc
 	import gcode
+	# import tng
 	planetcnc_enabled = True
 	print("Running under PlanetCNC - OK")
 except:
@@ -311,10 +313,20 @@ class MainWindow(QMainWindow):
 		
 		### ADD G-CODE TO PLANET
 		if planetcnc_enabled:
+			
+			if gcode.isRunning():
+				print('Error - gcode running')
+			else:
+				pass
+				
+			gcode.close()
+
 			lines = longstring.splitlines()
 			for line in lines:
 				gcode.lineAdd(line)
-			
+			# gcode.open()
+
+			gc.collect()			
 			self.close()
 
 		
