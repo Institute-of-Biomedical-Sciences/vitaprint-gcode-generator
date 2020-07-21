@@ -14,13 +14,19 @@ b) Run script in terminal (copy scaffoldGUI.py and scaffoldGEN.py to same target
 
 import sys
 import os
+import gc
+
 from PyQt5 import QtCore, QtWidgets
 from PyQt5.QtWidgets import QMainWindow, QWidget, QLabel, QLineEdit, QPushButton, QComboBox, QCheckBox, QFileDialog
 from PyQt5.QtCore import QSize
 from PyQt5.QtGui import QIcon, QPixmap
 
+
 import numpy as np
 from scaffoldGEN import *
+
+
+gc.disable()
 
 ### CHECK IF SCRIPT IS RUNNING IN PLANET CNC
 planetcnc_enabled = False
@@ -246,11 +252,6 @@ class MainWindow(QMainWindow):
 		else:
 			pass
 		print('Save to file: '+ self.save_s)
-		# if self.save_i == 'on':
-			# print('File path: '+ save_directory.text() )
-		# else:
-			# pass
-		# print(self.browse_i)
 		
 		#### PASS INPUT TO VARIABLES
 		side_l = float(str(self.diameter_i.text()))
@@ -262,7 +263,7 @@ class MainWindow(QMainWindow):
 		drive = self.extrusion_state.text()
 		if drive == "mechanical":
 			dist_ext = float(self.E_i.text())
-			ramp = float(self.ramp_i.text()) #0.05 ######### tu še input!
+			ramp = float(self.ramp_i.text())
 			flow = self.flow_s
 			if flow == 'on':
 				flow = '* #<_hw_jogpot>/511'
@@ -321,12 +322,8 @@ class MainWindow(QMainWindow):
 	
 	def close_app(self):
 		print('G-code generator closed')
-		self.close() # je za to kaka boljša komanda?
-		# self.quit()
-		# self.process.kill()
-		# self.commTerminate()
-		
-		# sys.exit() # to zapre cel program!
+		self.close()
+
 		
 	def shape_choice(self,text):
 		self.shape_state.setText(text)
@@ -350,8 +347,6 @@ class MainWindow(QMainWindow):
 			self.ramp_i.show()
 			
 			self.extrusion_i.setFocus()
-		# except:
-			# print('warning - drive change unsuccessful')
 		
 	def flowstate(self,state):
 		if state == QtCore.Qt.Checked:
@@ -388,12 +383,12 @@ class MainWindow(QMainWindow):
 		self.browse_i = browse_i
 
 
-if __name__ == "__main__":
+def start():
 	app = QtWidgets.QApplication(sys.argv)
 	mainWin = MainWindow()
 	mainWin.show()
 	app.exec_()
-	# app.closeAllWindows()
 	app.quit()
-	# sys.exit(app.exec_())
-	# sys.exit() # to zapre cel program!
+
+if __name__ == "__main__":
+	start()
