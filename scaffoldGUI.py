@@ -65,12 +65,12 @@ class MainWindow(QMainWindow):
 		
 		self.shape_state = QLabel(self) # Current scaffold shape STATE
 		self.shape_state.setText('cuboid') # default value
-		self.shape_state.move(160,18)
+		self.shape_state.move(180,18)
 		
 		self.shape_i = QComboBox(self) # Drop-down menu scaffold shape
 		self.shape_i.addItem('cuboid')
 		self.shape_i.addItem('cylinder')
-		self.shape_i.move(160,20)
+		self.shape_i.move(180,20)
 		self.shape_i.resize(100, 20)
 		
 		self.shape_i.activated[str].connect(self.shape_choice) # call function which returns the selected shape
@@ -83,44 +83,44 @@ class MainWindow(QMainWindow):
 		
 		self.extrusion_state = QLabel(self) # Current scaffold shape STATE
 		self.extrusion_state.setText('mechanical') # default value
-		self.extrusion_state.move(160,48)
+		self.extrusion_state.move(180,48)
 		
 		self.extrusion_i = QComboBox(self)
 		self.extrusion_i.addItem('mechanical')
 		self.extrusion_i.addItem('pneumatic')
-		self.extrusion_i.move(160,50)
+		self.extrusion_i.move(180,50)
 		self.extrusion_i.resize(100, 20)
 		
 		self.extrusion_i.activated[str].connect(self.extr_choice) # call function which returns the selected extrusion drive
 
 		self.E = QLabel(self) # Extrusion rate
 		self.E.setText('Extrusion rate [mm/10mm]:') #only works if mechanical
-		self.E.move(20, 73)
+		self.E.move(25, 73)
 		self.E.resize(135, 20)
 		
 		self.E_i = QLineEdit(self)
 		self.E_i.setText('0.2')
-		self.E_i.move(160, 73)
+		self.E_i.move(180, 73)
 		self.E_i.resize(100, 20)
 		
 		self.retramp = QLabel(self) # Extrusion rate
 		self.retramp.setText('Ramp/retraction [mm]:') #only works if mechanical
-		self.retramp.move(20, 95)
+		self.retramp.move(25, 95)
 		self.retramp.resize(135, 20)
 		
 		self.ramp_i = QLineEdit(self)
 		self.ramp_i.setText('0.05')
-		self.ramp_i.move(160, 95)
+		self.ramp_i.move(180, 95)
 		self.ramp_i.resize(100, 20)
 				
 		self.flowc = QLabel(self) # Flow control
 		self.flowc.setText('Flow control:') #only works if mechanical
-		self.flowc.move(20, 110)
+		self.flowc.move(25, 110)
 		self.flow_s = 'off'
 		
 		self.flowc_i = QCheckBox(self)
 		self.flowc_i.stateChanged.connect(self.flowstate)
-		self.flowc_i.move(160,110)
+		self.flowc_i.move(180,110)
 
 
 		### SIZE
@@ -131,7 +131,7 @@ class MainWindow(QMainWindow):
 		
 		self.diameter_i = QLineEdit(self)
 		self.diameter_i.setText('10')
-		self.diameter_i.move(160, 140)
+		self.diameter_i.move(180, 140)
 		self.diameter_i.resize(100, 20)
 		
 		
@@ -142,7 +142,7 @@ class MainWindow(QMainWindow):
 		
 		self.nbar_i = QLineEdit(self)
 		self.nbar_i.setText('7')
-		self.nbar_i.move(160, 170)
+		self.nbar_i.move(180, 170)
 		self.nbar_i.resize(100, 20)
 				
 		
@@ -153,7 +153,7 @@ class MainWindow(QMainWindow):
 		
 		self.nlay_i = QLineEdit(self)
 		self.nlay_i.setText('5')
-		self.nlay_i.move(160, 200)
+		self.nlay_i.move(180, 200)
 		self.nlay_i.resize(100, 20)
 		
 		
@@ -164,7 +164,7 @@ class MainWindow(QMainWindow):
 		
 		self.lh_i = QLineEdit(self)
 		self.lh_i.setText('0.2')
-		self.lh_i.move(160, 230)
+		self.lh_i.move(180, 230)
 		self.lh_i.resize(100, 20)
 		
 		
@@ -175,7 +175,7 @@ class MainWindow(QMainWindow):
 		
 		self.feed_i = QLineEdit(self)
 		self.feed_i.setText('500')
-		self.feed_i.move(160, 260)
+		self.feed_i.move(180, 260)
 		self.feed_i.resize(100, 20)
 		
 
@@ -188,16 +188,16 @@ class MainWindow(QMainWindow):
 		self.skirt_i = QCheckBox(self)
 		self.skirt_i.setChecked(True)
 		self.skirt_i.stateChanged.connect(self.skirtyn)
-		self.skirt_i.move(160,285)
+		self.skirt_i.move(180,285)
 		
 		self.sdist = QLabel(self) # Flow control
 		self.sdist.setText('Skirt distance [mm]:') #only works if mechanical
-		self.sdist.move(20, 305)
+		self.sdist.move(25, 305)
 		# self.sdist_s = 'on'
 		
 		self.sdist_i = QLineEdit(self)
 		self.sdist_i.setText('2')
-		self.sdist_i.move(160,310)		
+		self.sdist_i.move(180,310)		
 		self.sdist_i.resize(100, 20)
 		
 
@@ -224,12 +224,12 @@ class MainWindow(QMainWindow):
 		self.save_i = QCheckBox(self)
 		self.save_i.setChecked(False)
 		self.save_i.stateChanged.connect(self.saveyn)
-		self.save_i.move(160,336)
+		self.save_i.move(180,336)
 		
 		self.browse = QPushButton('Choose Directory', self)
 		self.browse.clicked.connect(self.browse_dir)
 		self.browse.resize(100, 20)
-		self.browse.move(180,340)
+		self.browse.move(200,340)
 		self.browse_i = 'local'
 		self.browse.hide()
 		
