@@ -4,6 +4,9 @@ This repository contains g-code generators for Vitaprint 3D bioprinting platform
 
 To use the g-code generator, copy the files scaffoldGEN_GUI.py, scaffoldGEN.py, scaffoldGEN_rect.py, schematic.png and schematic_xy.png to the same directory. Execute "scaffoldGEN_GUI.py" by double clicking or via commandline. To function, Python 3 is required with repositories for Numpy and PyQt5.
 
+The user interface should look something like this:
+[!]()
+
 ## License <a id="license"></a>
 
 All our projects are as usefully open-source as possible.
